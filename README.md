@@ -1,2 +1,5 @@
 # TIL2
-Today I Learned
+## Index
+
+- [Redis 개념](./redis.md)
+
