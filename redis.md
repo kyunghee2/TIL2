@@ -43,3 +43,23 @@ redis> get foo
 "bar"
 ```
 
+## Redis 설치(Window)
+
+- https://github.com/microsoftarchive/redis/releases 사이트에서 
+- Redis-x64-3.2.100.msi Window용 다운로드 및 설치
+
+![1575206453304](C:\Users\kyung\AppData\Roaming\Typora\typora-user-images\1575206453304.png)
+- Next
+![1575206533066](C:\Users\kyung\AppData\Roaming\Typora\typora-user-images\1575206533066.png)
+- 시스템 Path에 설정 체크박스 체크
+![1575206560216](C:\Users\kyung\AppData\Roaming\Typora\typora-user-images\1575206560216.png)
+- 기본포트 6379, 윈도우즈 방화벽에 예외처리체크박스 체크
+![1575206579880](C:\Users\kyung\AppData\Roaming\Typora\typora-user-images\1575206579880.png)
+- Redis 서버가 사용할 수 있는 최대 메모리 크기 설정
+![1575206621038](C:\Users\kyung\AppData\Roaming\Typora\typora-user-images\1575206621038.png)
+
+- 설치가 완료되면 아래와 같은 파일을 확인 할 수 있다
+  - redis.windows.conf 파라메터 파일
+  - redis-server.exe 인스턴스 시작 실행 파일
+
+![1575207046803](C:\Users\kyung\AppData\Roaming\Typora\typora-user-images\1575207046803.png)
