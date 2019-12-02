@@ -71,3 +71,67 @@ redis> get foo
   - redis-server.exe 인스턴스 시작 실행 파일
 
 ![1575207046803](./md_img/1575207046803.png)
+
+## Redis 시작과 종료(Linux)
+
+- Redis Server 시작
+
+```bash
+$ cd /home/redis/src
+$ ./redis-server redis_5000.conf
+```
+
+- Redis Client 실행 및 종료
+
+```bash
+$ cd /home/redis/src
+$ ./redis-cli -p 5000 #port 5000으로 redis 서버 접속
+
+#종료
+120.0.0.1:5000 > shutdown
+```
+
+
+
+## Redis 시작과 종료(Window)
+
+#### redis 서버 서비스로 등록
+
+- 관리자 권한으로 Redis 폴더내에서 명령프롬프트(cmd.exe) 실행
+
+```bash
+#파일명변경
+\path\to\Redis> move redis.windows-service.conf redis.conf
+#Redis 서버를 시작하는 작업이 윈도우 서버가 시작될때 마다 자동으로 실행되도록 등록
+\path\to\Redis> redis-server --service-install redis.conf --service-name redis6379
+```
+
+- 작업관리자 - 서비스텝에서 확인가능
+
+![1575285205883](md_img/1575285205883.png)
+
+- 제어판 - 서비스 에서 확인가능
+
+![1575285249180](md_img/1575285249180.png)
+
+#### redis-cli를 통해 Redis 서버 접속
+
+```
+\path\to\Redis> redis-cli -p 6379
+```
+
+![1575285920669](md_img/1575285920669.png)
+
+- 명령어 목록 https://redis.io/commands 참고
+
+## Redis 명령어
+
+- 데이터 입력/수정/삭제/조회
+  - set : 데이터를 저장할 때(key, value)
+  - get : 저장된 데이터를 검색할 때
+  - rename : 저장된 데이터 값을 변경할 때
+  - rendomkey : 저장된 key 중에 하나의 key를 랜덤하게 검색할 때
+  - keys : 저장된 모든 key를 검색할 때
+  - exits : 검색 대상 key가 존재하는지 여부를 확인 할 때
+  - mset/ mget : 여러개의 key와 value를 한 번 저장하고 검색할 때
+
