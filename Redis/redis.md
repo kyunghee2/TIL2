@@ -258,3 +258,126 @@ lru_clock:15070081
 -  HyperLogLogs :  Element  중에서  Unique 한 개수의  Element 만 계산
 - Geospatial : 좌표 데이터를 저장 및 관리하는 데이터 타입
 
+#### Hash 타입
+
+-  Hash 타입은 기존 관계형 DB 에서   Primary-Key 와 하나 이상의 컬럼으로 구성된 테이블 구조와 매우 흡사한 데이터 유형
+- 하나의 key는 오브젝트명과 하나 이상의 필드값을 콜론(:) 기호로 결합하여 표현할 수 있다 (예, order:201912031, order_detail:201912031:01)
+- 문자값을 저장할 때는 인용부호("")를 사용, 숫자값을 저장할때는 인용부호 가 필요없다
+- 기본적으로 필드 개수는 제한 없다
+- 실습
+
+```cmd
+#Hash 타입은 하나의 key에 여러 개의 field와 value를 저장할 수 있음
+127.0.0.1:6379> hmset order:2019120301 custome_name "Wonman & Sports" emp_name "Magee" total 601100 payment_type "Credit" order_filled "Y" ship_date 20191203
+OK
+
+#order:2019120301에 대한 필드값 검색 결과
+127.0.0.1:6379> hget order:2019120301 custome_name
+"Wonman & Sports"
+127.0.0.1:6379> hmset order:2019120301 customer_name "Wonman & Sports" emp_name "Magee" total 601100 payment_type "Credit" order_filled "Y" ship_date 20191203
+OK
+127.0.0.1:6379> hget order:2019120301 customer_name
+"Wonman & Sports"
+127.0.0.1:6379> hget order:2019120301 ship_date
+"20191203"
+
+#order:2019120301 key에 대한 모든 필드와 value값 조회
+127.0.0.1:6379> hgetall order:2019120301
+ 1) "custome_name"
+ 2) "Wonman & Sports"
+ 3) "emp_name"
+ 4) "Magee"
+ 5) "total"
+ 6) "601100"
+ 7) "payment_type"
+ 8) "Credit"
+ 9) "order_filled"
+10) "Y"
+11) "ship_date"
+12) "20191203"
+13) "customer_name"
+14) "Wonman & Sports"
+
+#custome_name 필드 제거
+127.0.0.1:6379> hdel order:2019120301 custome_name
+(integer) 1
+127.0.0.1:6379> hgetall order:2019120301
+ 1) "emp_name"
+ 2) "Magee"
+ 3) "total"
+ 4) "601100"
+ 5) "payment_type"
+ 6) "Credit"
+ 7) "order_filled"
+ 8) "Y"
+ 9) "ship_date"
+10) "20191203"
+11) "customer_name"
+12) "Wonman & Sports"
+
+#product_name 필드 존재하는지 여부 확인
+127.0.0.1:6379> hexists order:2019120301 product_name
+(integer) 0
+127.0.0.1:6379> hexists order:2019120301 customer_name
+(integer) 1
+
+#ship_date 필드 제거
+127.0.0.1:6379> hdel order:2019120301 ship_date
+(integer) 1
+127.0.0.1:6379> hgetall order:2019120301
+ 1) "emp_name"
+ 2) "Magee"
+ 3) "total"
+ 4) "601100"
+ 5) "payment_type"
+ 6) "Credit"
+ 7) "order_filled"
+ 8) "Y"
+ 9) "customer_name"
+10) "Wonman & Sports"
+
+#ship_date 필드 다시 추가
+127.0.0.1:6379> hmset order:2019120301 ship_date 20191203
+OK
+127.0.0.1:6379> hgetall order:2019120301
+ 1) "emp_name"
+ 2) "Magee"
+ 3) "total"
+ 4) "601100"
+ 5) "payment_type"
+ 6) "Credit"
+ 7) "order_filled"
+ 8) "Y"
+ 9) "customer_name"
+10) "Wonman & Sports"
+11) "ship_date"
+12) "20191203"
+
+#order:2019120301 키에 대한 모든 필드명 만 출력
+127.0.0.1:6379> hkeys order:2019120301
+1) "emp_name"
+2) "total"
+3) "payment_type"
+4) "order_filled"
+5) "customer_name"
+6) "ship_date"
+
+#order:2019120301 키에 대한 모든 value 만 출력
+127.0.0.1:6379> hvals order:2019120301
+1) "Magee"
+2) "601100"
+3) "Credit"
+4) "Y"
+5) "Wonman & Sports"
+6) "20191203"
+
+#필드명 개수 출력
+127.0.0.1:6379> hlen order:2019120301
+(integer) 6
+
+#특정필드 value만 출력
+127.0.0.1:6379> hmget order:2019120301 emp_name total
+1) "Magee"
+2) "601100"
+```
+
