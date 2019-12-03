@@ -126,7 +126,7 @@ $ ./redis-cli -p 5000 #port 5000으로 redis 서버 접속
 
 ## Redis 데이터 처리
 
-#### 데이터 입력/수정/삭제/조회
+### 데이터 입력/수정/삭제/조회
 
 - set : 데이터를 저장할 때(key, value)
 - get : 저장된 데이터를 검색할 때
@@ -137,7 +137,7 @@ $ ./redis-cli -p 5000 #port 5000으로 redis 서버 접속
 - mset/ mget : 여러개의 key와 value를 한 번 저장하고 검색할 때
 - del :  저장된 데이터 삭제
 
-##### 실습
+#### 실습
 
 ```cmd
 #key:1111, value:KH PARK 데이터 저장
@@ -245,4 +245,16 @@ lru_clock:15070081
 - save 명령어에 의해 생성된 rdb 파일
 
 ![1575351489179](md_img/1575351489179.png)
+
+
+
+### 데이터 타입
+
+- strings : 문자(text), Binary 유형 데이터를 저장
+- List : 하나의 key에 여러 개의 배열 값을 저장
+- Hash : 하나의 Key에 여러개의  Fields 와 Value로 구성
+- Set Sorted set : 정렬되지 않은  String타입, Set과  Hash 를 결합한 타입
+- Bitmaps : 0,1 로 표현하는 데이터 타입
+-  HyperLogLogs :  Element  중에서  Unique 한 개수의  Element 만 계산
+- Geospatial : 좌표 데이터를 저장 및 관리하는 데이터 타입
 
