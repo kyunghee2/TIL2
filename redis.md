@@ -16,7 +16,7 @@
 
 
 
-### Redis 설치(Linux)
+## Redis 설치(Linux)
 
 Download, extract and compile Redis with:
 
@@ -124,14 +124,125 @@ $ ./redis-cli -p 5000 #port 5000으로 redis 서버 접속
 
 - 명령어 목록 https://redis.io/commands 참고
 
-## Redis 명령어
+## Redis 데이터 처리
 
-- 데이터 입력/수정/삭제/조회
-  - set : 데이터를 저장할 때(key, value)
-  - get : 저장된 데이터를 검색할 때
-  - rename : 저장된 데이터 값을 변경할 때
-  - rendomkey : 저장된 key 중에 하나의 key를 랜덤하게 검색할 때
-  - keys : 저장된 모든 key를 검색할 때
-  - exits : 검색 대상 key가 존재하는지 여부를 확인 할 때
-  - mset/ mget : 여러개의 key와 value를 한 번 저장하고 검색할 때
+#### 데이터 입력/수정/삭제/조회
+
+- set : 데이터를 저장할 때(key, value)
+- get : 저장된 데이터를 검색할 때
+- rename : 저장된 데이터 값을 변경할 때
+- rendomkey : 저장된 key 중에 하나의 key를 랜덤하게 검색할 때
+- keys : 저장된 모든 key를 검색할 때
+- exits : 검색 대상 key가 존재하는지 여부를 확인 할 때
+- mset/ mget : 여러개의 key와 value를 한 번 저장하고 검색할 때
+- del :  저장된 데이터 삭제
+
+##### 실습
+
+```cmd
+#key:1111, value:KH PARK 데이터 저장
+127.0.0.1:6379> set 1111 "KH PARK"
+OK
+127.0.0.1:6379> set 1112 "YH JOO"
+OK
+127.0.0.1:6379> set 1113 "KO HONG"
+OK
+
+#현재 저장되어 있는 모든 키 출력
+127.0.0.1:6379> keys *
+1) "name"
+2) "1113"
+3) "1112"
+4) "1111"
+
+#key:name 삭제
+127.0.0.1:6379> del name
+(integer) 1
+
+127.0.0.1:6379> keys *
+1) "1113"
+2) "1112"
+3) "1111"
+#key중이 2로 끝나는 key만 검색
+127.0.0.1:6379> keys *2
+1) "1112"
+
+#key:1113에서 key:1116으로 변경
+127.0.0.1:6379> rename 1113 1116
+OK
+#현재 저장되어 있는 모든키 조회
+127.0.0.1:6379> keys *
+1) "1116"
+2) "1112"
+3) "1111"
+
+#key:1116의 존재 여부 검색 (존재:1)
+127.0.0.1:6379> exists 1116
+(integer) 1
+127.0.0.1:6379> exists 115
+(integer) 0
+#key:1111의  value  길이
+127.0.0.1:6379> strlen 1111
+(integer) 7
+127.0.0.1:6379> keys 1111
+1) "1111"
+127.0.0.1:6379> get 1111
+"KH PARK"
+```
+
+
+
+```cmd
+127.0.0.1:6379> mset seq_no 201912001 #연속번호 발행을 위한 key/value저장
+OK
+127.0.0.1:6379> incr seq_no #incremental 증가값 +1
+(integer) 201912002
+127.0.0.1:6379> decr seq_no #decremental 감소값 -1
+(integer) 201912001
+127.0.0.1:6379> incrby seq_no 2 #incremental 증가값 +2
+(integer) 201912003
+127.0.0.1:6379> decrby seq_no 10 #decremental 감소값 -10
+(integer) 201911993
+
+127.0.0.1:6379> append 1115 " co."
+(integer) 7
+127.0.0.1:6379> keys *
+1) "1116"
+2) "seq_no"
+3) "1115"
+4) "1113"
+5) "1111"
+6) "1112"
+127.0.0.1:6379> get 1115
+"PIT co."
+127.0.0.1:6379> save
+OK
+127.0.0.1:6379> flushall
+OK
+127.0.0.1:6379> keys *
+(empty list or set)
+127.0.0.1:6379> info
+# Server
+redis_version:3.2.100
+redis_git_sha1:00000000
+redis_git_dirty:0
+redis_build_id:dd26f1f93c5130ee
+redis_mode:standalone
+os:Windows
+arch_bits:64
+multiplexing_api:WinSock_IOCP
+process_id:35680
+run_id:f0aa3c8c632262d58b60021358b0264d22893fb8
+tcp_port:6379
+uptime_in_seconds:144385
+uptime_in_days:1
+hz:10
+lru_clock:15070081
+.....
+127.0.0.1:6379> exit
+```
+
+- save 명령어에 의해 생성된 rdb 파일
+
+![1575351489179](md_img/1575351489179.png)
 
