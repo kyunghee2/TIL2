@@ -381,3 +381,20 @@ OK
 2) "601100"
 ```
 
+#### List 타입
+
+- 배열(Array) 변수와 유사한 데이터 구조
+- 기본적으로 String 타입의 경우 배열에 저장할 수 있는 데이터 크기 512MB
+- List 타입의 데이터 처리할 때 lpush, lrange, rpush, rpop, llen, lindex 명령어를 사용
+
+#### Set 타입
+
+- List타입은 하나의 필드에 여러개의 배열(Array)값을 저장할 수 있는 데이터 구조라면 Set타입은 배열구조가 아닌 여러개의 엘리먼트(Element)로 데이터 값을 표현하는 구조
+- Set 타입의 데이터 처리할 때는 sadd, smembers, scard, sdiff, sunion명령어를 사용
+
+#### Sorted Set 타입
+
+- Sorted Set 타입은 Set타입과 동일한 데이터 구조이며 차이점은 저장된 데이터 값이 분류(Sorting)된 상태이면 Sorted Set 타입이고 분류되지 않으면 Set타입
+- 데이터 처리할때 zadd, zrange, zcard, zcount, zrank ,zrevrank 명령어 사용함
+
+#### 
