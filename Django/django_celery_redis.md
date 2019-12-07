@@ -92,9 +92,12 @@ __all__ = ['celery_app']
 
 ### celery 실행
 
+- window의 경우 **--pool=solo** 옵션추가
+
 ```bash
 #celery -A <mysite> worker -l info
-celery -A config worker --loglevel=info
+#celery -A config worker --loglevel=info
+(venv) $ celery worker -A config --loglevel=info --pool=solo
 ```
 
 
@@ -110,18 +113,18 @@ settings.py 파일에 CELERY_BROKER_URL, CELERY_RESULT_BACKEND 확인
 - **실행결과**
 
 ```bash
-kyung@DESKTOP-KGB9UAE MINGW64 /c/TIL2/django_celery_redis (master)
-$ celery -A config worker --loglevel=info
+#TIL2/django_celery_redis (master)
+(venv) $ celery worker -A config --loglevel=info --pool=solo
 
- -------------- celery@DESKTOP-KGB9UAE v4.3.0 (rhubarb)      
+ -------------- celery@DESKTOP-KGB9UAE v4.3.0 (rhubarb)
 ---- **** -----
---- * ***  * -- Windows-10-10.0.18362-SP0 2019-12-05 23:11:34
+--- * ***  * -- Windows-10-10.0.18362-SP0 2019-12-07 20:58:28
 -- * - **** ---
 - ** ---------- [config]
-- ** ---------- .> app:         config:0x3fee4f0
-- ** ---------- .> transport:   redis://localhost:6379/0     
-- ** ---------- .> results:     redis://localhost:6379/0
-- *** --- * --- .> concurrency: 8 (prefork)
+- ** ---------- .> app:         config:0x3a20748
+- ** ---------- .> transport:   redis://localhost:6379/1
+- ** ---------- .> results:     redis://localhost:6379/1
+- *** --- * --- .> concurrency: 8 (solo)
 -- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
 --- ***** -----
  -------------- [queues]
@@ -131,18 +134,10 @@ $ celery -A config worker --loglevel=info
 [tasks]
   . config.tasks.add
 
-[2019-12-05 23:11:37,394: INFO/MainProcess] Connected to redis://localhost:6379/0
-[2019-12-05 23:11:38,379: INFO/SpawnPoolWorker-3] child process 54296 calling self.run()
-[2019-12-05 23:11:38,405: INFO/SpawnPoolWorker-5] child process 56604 calling self.run()
-[2019-12-05 23:11:38,526: INFO/SpawnPoolWorker-1] child process 53912 calling self.run()
-[2019-12-05 23:11:38,721: INFO/SpawnPoolWorker-6] child process 49696 calling self.run()
-[2019-12-05 23:11:38,915: INFO/SpawnPoolWorker-2] child process 14220 calling self.run()
-[2019-12-05 23:11:39,075: INFO/SpawnPoolWorker-7] child process 54888 calling self.run()
-[2019-12-05 23:11:39,135: INFO/SpawnPoolWorker-8] child process 30924 calling self.run()
-[2019-12-05 23:11:39,318: INFO/SpawnPoolWorker-4] child process 46896 calling self.run()
-[2019-12-05 23:11:41,556: INFO/MainProcess] mingle: searching for neighbors
-[2019-12-05 23:11:49,163: INFO/MainProcess] mingle: all alone
-[2019-12-05 23:11:57,371: INFO/MainProcess] celery@DESKTOP-KGB9UAE ready.
+[2019-12-07 20:58:30,969: INFO/MainProcess] Connected to redis://localhost:6379/1
+[2019-12-07 20:58:32,991: INFO/MainProcess] mingle: searching for neighbors
+[2019-12-07 20:58:40,029: INFO/MainProcess] mingle: all alone
+[2019-12-07 20:58:50,068: INFO/MainProcess] celery@DESKTOP-KGB9UAE ready.
 ```
 
 ### Shell에서 Celery를 이용한 작업처리
@@ -157,9 +152,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 (InteractiveConsole)
 >>> from config.tasks import add
 >>> result = add.delay(4,4)
->>> result = add.delay(4,4)
->>> result = add.delay(4,4)
+>>> result.status
+'SUCCESS'
+>>> result.get()
+8
 ```
+![1575720115091](md_img/1575720115091.png)
+
 - celery shell을 확인해보면 **Received task** 라는 메시지와 함께 실행된 것을 확인 할 수 있다
 
-![1575554015269](md_img/1575554015269.png)
+![1575720135403](md_img/1575720135403.png)
+
