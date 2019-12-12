@@ -25,7 +25,7 @@ public class ReverseArray {
 			System.out.print("x["+i+"] : ");
 			x[i] = stdIn.nextInt();
 		}
-		
+		//배열 역순정렬
 		reverse(x);
 		
 		System.out.println("요소를 역순으로 정렬했습니다.");
