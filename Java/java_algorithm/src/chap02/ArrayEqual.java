@@ -2,6 +2,7 @@ package chap02;
 
 import java.util.Scanner;
 
+//배열비교
 public class ArrayEqual {
 	static boolean equal(int[] a, int[] b) {
 		if(a.length != b.length)

@@ -1,5 +1,6 @@
 package chap02;
 
+//소수판별
 public class PrimeNumber2 {
 	public static void main(String[] args) {
 		int counter = 0;

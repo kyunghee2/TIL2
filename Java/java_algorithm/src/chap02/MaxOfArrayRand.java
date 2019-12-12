@@ -3,6 +3,7 @@ package chap02;
 import java.util.Random;
 import java.util.Scanner;
 
+//max값 구하기
 public class MaxOfArrayRand {
 	static int maxOf(int[] a) {
 		int max = a[0];
