@@ -23,7 +23,7 @@ public class SeqSearchSen {
 		int[] x = new int[num + 1];
 		
 		for(int i=0;i <num;i++) {
-			System.out.println("x["+i+"]:");
+			System.out.print("x["+i+"]:");
 			x[i]=stdln.nextInt();
 		}
 		
