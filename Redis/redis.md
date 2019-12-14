@@ -397,4 +397,22 @@ OK
 - Sorted Set 타입은 Set타입과 동일한 데이터 구조이며 차이점은 저장된 데이터 값이 분류(Sorting)된 상태이면 Sorted Set 타입이고 분류되지 않으면 Set타입
 - 데이터 처리할때 zadd, zrange, zcard, zcount, zrank ,zrevrank 명령어 사용함
 
-#### 
+####  Bit 타입
+
+- 일반적으로 사용자가 표현하는 데이터는 문자,숫자,날짜인데 이를 Ascii값이라고 표현하는데 컴퓨터는 이를 최종적으로 0과 1로 표현되는 Bit값으로 변환하여 저장한다. Redis에서 제공되는 Bit타입은 사용자의 데이터를 0과 1로 표현하며 컴퓨터가 가장 빠르게 저장할 수 있고 해석할 수 있도록 표현하는 구조
+- 데이터 처리할때는 setbit, getbit, bitcount 명령어를 사용함
+
+#### Geo 타입
+
+#### HyperLogLogs 타입
+
+
+
+## Redis 확장 Module
+
+- REJSON : JSON 데이터 타입을 이용하여 데이터를 처리할 수 있는 모듈
+- RediSQL : Redis Server에서 SQLite(관계형DB)로 데이터를 저장할 수 있는 모듈
+- RediSearch : Redis DB내에 저장된 데이터에 대한 검색엔진을 사용할 수 있는 모듈
+- Redis-ML : Machine Learing Model Server를 Redis 서버에서 사용할 수 있는 모듈
+- Redis-sPiped : Redis Server로 전송되는 데이터를 암호화할 수 있는 모듈
+
