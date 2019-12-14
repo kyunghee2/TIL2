@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - IntStackTester",
+            "request": "launch",
+            "mainClass": "chap04.IntStackTester",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MaxOfArray",
+            "request": "launch",
+            "mainClass": "chap02.MaxOfArray",
+            "projectName": "java_algorithm"
+        }
+    ]
+}
