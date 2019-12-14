@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - IntQueueTester",
+            "request": "launch",
+            "mainClass": "chap04.IntQueueTester",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - IntStackTester",
             "request": "launch",
             "mainClass": "chap04.IntStackTester",
