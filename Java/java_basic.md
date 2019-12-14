@@ -81,3 +81,43 @@ class Y implements X{
 - 내부 클래스(inner class)는 명시적으로 암묵적으로도 정적(static)으로 선언되지 않는 중첩 클래스 입니다. 정적 초기화나 멤버 인터페이스 선언을 할 수 없습니다. 그리고 컴파일을 할 때 상수 필드가 아닌 한 정적 멤버를 선언할 수 없습니다.
 - 지역 클래스는 이름이 주어진 중첩 클래스인 내부 클래스 입니다. 어떤 클래스 맴버도 될 수 없습니다.
 
+## 제너릭
+
+- 제너릭은 처리해야 할 대상의 자료형에 의존하지 않는 클래스(인터페이스) 구현 방식 입니다.
+- 제너릭 클래스는 자료형에 의존하지 않기 때문에 범용으로 사용할 수 있다
+- 제너릭 클래스는 이름 바로 뒤에 <Type>같은 형식의 파라미터를 붙여 선언
+
+```
+class 클릭스 이름 <파라미터1, 파라미터2,...>{}
+interface 인터페이스 이름 <파라미터1, 파라미터2,...>{}
+```
+
+```java
+public class GenericClassTester {
+	static class GenericClass<T>{
+		private T xyz;
+		GenericClass(T t){ //생성자
+			this.xyz = t;
+		}
+		public T getXyz() {
+			return xyz;
+		}
+				
+	}
+	public static void main(String[] args) {
+		GenericClass<String> s = new GenericClass<String>("abc");
+		GenericClass<Integer> n = new GenericClass<Integer>(15);
+		
+		System.out.println(s.getXyz());
+		System.out.println(n.getXyz());
+	}
+}
+```
+
+## 스택과 큐
+
+### 스택이란
+
+- 스택(stack)은 데이터를 일시적으로 저장하기 위해 사용하는 자료구조로 데이터의 입력과 축력 순서는 후입선출(LIFO,Last In First Out)입니다.
+- 스택에 데이터를 넣는 작업을 푸시(push)라 하고 스택에서 데이터를 꺼내는 작업을 팝(pop)이라고 합니다.
+
