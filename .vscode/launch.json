@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - LastNElements",
+            "request": "launch",
+            "mainClass": "chap04.LastNElements",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - IntQueueTester",
             "request": "launch",
             "mainClass": "chap04.IntQueueTester",
