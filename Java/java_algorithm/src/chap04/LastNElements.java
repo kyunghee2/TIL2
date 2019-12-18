@@ -1,7 +1,7 @@
 package chap04;
 
 import java.util.Scanner;
-
+//링 버퍼의 활용
 class LastNElements{
     public static void main(String[] args) {
         Scanner stdIn = new Scanner(System.in);
@@ -14,9 +14,9 @@ class LastNElements{
         do{
             System.out.printf("%d번째 정수 :",cnt+1);
             System.out.printf("cnt++:%d N:%d\n",cnt,N);
+            System.out.println("cnt++ % N:"+cnt % N);
             a[cnt++ % N] = stdIn.nextInt();
-            System.out.println("cnt++ % N:"+cnt++ % N);
-            
+                        
             System.out.print("계속 할까요?(예.1/아니오.0):");
             retry = stdIn.nextInt();
         }while(retry == 1);

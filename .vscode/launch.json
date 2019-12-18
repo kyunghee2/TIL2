@@ -2,6 +2,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Hanoi",
+            "request": "launch",
+            "mainClass": "chap05.Hanoi",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Recur",
+            "request": "launch",
+            "mainClass": "chap05.Recur",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EuclidGCD",
+            "request": "launch",
+            "mainClass": "chap05.EuclidGCD",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Factorial",
+            "request": "launch",
+            "mainClass": "chap05.Factorial",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - LastNElements",
             "request": "launch",
             "mainClass": "chap04.LastNElements",
