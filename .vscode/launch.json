@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - FileImport",
+            "request": "launch",
+            "mainClass": "chap06.FileImport",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - BubbleSort",
+            "request": "launch",
+            "mainClass": "chap06.BubbleSort",
+            "projectName": "java_algorithm"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - Hanoi",
             "request": "launch",
             "mainClass": "chap05.Hanoi",
