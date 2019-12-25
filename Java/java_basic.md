@@ -118,7 +118,7 @@ public class GenericClassTester {
 
 ### 스택(Stack)
 
-- 스택(stack)은 데이터를 일시적으로 저장하기 위해 사용하는 자료구조로 데이터의 입력과 축력 순서는 후입선출(LIFO,Last In First Out)입니다.
+- 스택(stack)은 데이터를 일시적으로 저장하기 위해 사용하는 자료구조로 데이터의 입력과 출력 순서는 후입선출(LIFO,Last In First Out)입니다.
 - 스택에 데이터를 넣는 작업을 푸시(push)라 하고 스택에서 데이터를 꺼내는 작업을 팝(pop)이라고 합니다.
 
 ### 큐(Queue)
