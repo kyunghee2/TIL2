@@ -385,7 +385,46 @@ function getDOM(){
 
 - 체크박스 컴포넌트 구현
 
-```
+```react
+...
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  class CBox extends React.Component {
+    //생성자
+    constructor(props){
+      super(props)
+      //상태초기화
+      this.state = {checked:false}
+    }
+    render(){
+      let mark = '□'
+      let bstyle = {fontWeight:'normal'}
+      if(this.state.checked){
+        mark = '■'
+        bstyle = {fontWeight:'bold'}
+      }
+      const clickHandler = (e)=>{
+        const newValue = !this.state.checked
+        this.setState({checked: newValue})
+      }
+      return (
+        <div onClick={clickHandler} style={bstyle}>
+          {mark}{this.props.label}
+        </div>
+      )
+    }
+      
+  }
+    const dom = <div>
+      <CBox label="Apple"/>
+      <CBox label="Banana"/>
+      <CBox label="Orange"/>
+      <CBox label="Mango"/>
+    </div>
 
+    ReactDOM.render(dom, document.getElementById('root'))
+  </script>
+</body>
 ```
 
