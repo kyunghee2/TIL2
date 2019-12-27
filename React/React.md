@@ -319,13 +319,13 @@ function getDOM(){
       <h3>{props.title}</h3>
     </div>
   )
-  const ContentParts = (props)=>(
+  const ContentParts = (props) => (
     <div>
       <div>줄거리:{props.body}</div>
     </div>
   )
   //메인 컴포넌트
-  const Book = (props)=>(
+  const Book = (props) => (
     <div>
       <TitleParts title={props.title}/>
       <ContentParts body={props.body}/>
@@ -343,5 +343,49 @@ function getDOM(){
   </script>
 </body>
 </html>
+```
+
+### 이벤트의 구조와 구현
+
+- 리액트에서 클릭 이벤트 지정하는 방법
+
+```
+<div onClick={clickHandler}>Click Me</div>
+```
+
+- 클릭 이벤트 구현
+
+```react
+...
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  //컴포넌트 정의
+  class Hello extends React.Component {
+    render(){
+      //이벤트 정의
+      const clickHandler = (e) =>{
+        const name = this.props.name
+        window.alert(`${name}님 안녕하세요`)
+      }
+      //클릭이벤트 지정
+      return (
+        <div onClick={clickHandler}>Click Me</div>
+      )
+    }
+  }
+  //컴포넌트 사용
+  ReactDOM.render(
+    <Hello name='헬로'/>,
+    document.getElementById('root')
+  )
+  </script>
+</body>
+```
+
+- 체크박스 컴포넌트 구현
+
+```
+
 ```
 
