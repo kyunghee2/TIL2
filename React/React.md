@@ -31,6 +31,7 @@
   <div id="root"></div>
 
   <script type="text/babel">
+  //리액트로 DOM의 내용을 변경
   ReactDOM.render(
   <h1>Hello, world!</h1>,
   document.getElementById('root')
@@ -262,5 +263,85 @@ function getDOM(){
 
 #### 리스트 컴포넌트
 
+```react
+...
+<script type="text/babel">
+  //리스트컴포넌트 정의
+  
+  class RList extends React.Component {
+    render(){
+      const items = this.props.items.split(",")
+      const itemsObj = items.map(
+        (e)=>{
+          return <li>{e}</li>
+        })
+      let title = this.props.title
+      if(!title) title="LIST"
+      //렌더링할 내용을 반환
+      return (
+        <div>
+          <h3>{title}</h3>
+          <ul>{itemsObj}</ul>
+        </div>
+      )
+    }
+    
+  }
+  //컴포넌트 출력
+  ReactDOM.render(
+      <RList title="Colors" items="Red,Green,Blue,White" />,
+      document.getElementById('root')
+    )
+  </script>
+```
 
+
+
+#### 화살표 함수로 컴포넌트 정의
+
+```react
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+  const TitleParts = (props) => (
+    <div style={{backgroundColor:'blue',color:'white'}}>
+      <h3>{props.title}</h3>
+    </div>
+  )
+  const ContentParts = (props)=>(
+    <div>
+      <div>줄거리:{props.body}</div>
+    </div>
+  )
+  //메인 컴포넌트
+  const Book = (props)=>(
+    <div>
+      <TitleParts title={props.title}/>
+      <ContentParts body={props.body}/>
+    </div>
+  )
+  //리액트로 DOM의 내용을 변경
+  ReactDOM.render(
+    (<div>
+      <Book title='삼국지' body='옛날 중국 이야기'/>
+      <Book title='민수기' body='옛날 이스라엘 이야기'/>
+      <Book title='멋진신세계' body='미래 이야기'/>
+    </div>),
+    document.getElementById('root')
+  )
+  </script>
+</body>
+</html>
+```
 
