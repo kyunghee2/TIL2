@@ -184,3 +184,65 @@
 </html>
 ```
 
+#### JSX로 스타일 속성 지정하기
+
+- 스타일 속성을 객체로 지정
+
+```
+const obj = {prop1:value1, prop2:value2, prop3:value3...}
+const dom = <tag style={obj}...</tag>
+```
+
+- 실습
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+  ReactDOM.render(
+  getDOM(),
+  document.getElementById('root')
+);
+//요소를 반환하는 함수
+function getDOM(){
+  const css1 ={
+    "color":'red',
+    "background-color":'#f0f0ff',
+    "font-size":'2em'
+  }
+  const css2={
+    color:'blue',
+    backgroundColor:'#fff0f0',
+    fontSize:'2em'
+  }
+  return (
+    <div>
+      <p style={css1}>죄는 미워하되 사람은 미워하지 말라</p>
+      <p style={css2}>이것 또한 지나가리라</p>
+    </div>
+  )
+}
+  </script>
+</body>
+</html>
+```
+
+
+
+### 가상 DOM 
+
+> 가상 DOM은 DOM의 상태를 메모리에 저장하고 변경 전과 변경 후의 상태를 비교한 뒤 필요한 최소한의 내용만 반영하는 기능 입니다.
+
+> DOM 변경을 최소한으로 만들어 주므로 성능 상승시켜줌
