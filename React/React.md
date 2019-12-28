@@ -8,6 +8,7 @@
 
 - VS Code
 - VS Code - Extensions 탭 - simple react snippets 설치
+- Node.js 설치 (react 자동 빌드환경 설정시 필요)
 
 ![image-20191227220318622](md_img/image-20191227220318622.png)
 
@@ -15,7 +16,7 @@
 
 ### 리액트 시작하기
 
-```html
+```react
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,7 +78,7 @@
 
    - like_button.js 파일생성
 
-   ```javascript
+   ```react
    'use strict';
    
    const e = React.createElement;
@@ -164,7 +165,7 @@
 
 #### JSX 태그 내부에 변수를 넣는 방법
 
-```html
+```react
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -428,3 +429,53 @@ function getDOM(){
 </body>
 ```
 
+![image-20191228000652127](md_img/image-20191228000652127.png)
+
+### 리액트 도구를 사용한 자동빌드
+
+- create-react-app 설치
+
+```bash
+$ npm install -g create-react-app
+```
+- hello 프로젝트 생성
+```bash
+$ create-react-app hello
+```
+
+- 어플리케이션 실행
+
+```bash
+$ cd hello
+$ npm start
+```
+
+
+
+![image-20191228001210411](md_img/image-20191228001210411.png)
+
+- 디렉터리 구조
+  - node_modules : 설치한 모듈이 들어있는 디렉터리
+  - src: 프로그램 소스코드
+  - public:기본 골격 파일
+
+![image-20191228001411592](md_img/image-20191228001411592.png)
+
+### 프로그램 공개하기
+
+- 다음 명령어를 실행해 공개 전용 파일을 생성
+- build 라는 디렉터리가 생성되며 해당 디렉터리 내부에 다양한 파일이 압축된 상태로 생성됨
+
+```bash
+$ npm run build
+```
+
+- 빌드가 제대로 되었는지 확인하려면 웹서버가 필요합니다. 다음과 같은 명령어로 serve명령어를 설치
+
+```bash
+$ npm install -g serve
+
+$ serve -s build #build디렉터리를 서버의 루트 디렉터리로 실행
+```
+
+![image-20191228120930970](md_img/image-20191228120930970.png)
