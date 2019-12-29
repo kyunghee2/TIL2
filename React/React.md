@@ -479,3 +479,27 @@ $ serve -s build #build디렉터리를 서버의 루트 디렉터리로 실행
 ```
 
 ![image-20191228120930970](md_img/image-20191228120930970.png)
+
+
+
+### 컴포넌트의 라이프사이클
+
+![image-20191228230711298](md_img/image-20191228230711298.png)
+
+#### 컴포넌트 생성과 DOM에 마운트
+
+- constructor(props) - 객체가 생성될 때
+- componentWillMount() - 컴포넌트가 DOM에 마운트되기 직전
+- render() - 컴포넌트가 렌더링될 때
+- componentDidMount() - 컴포넌트가 DOM에 마운트된 직후
+
+#### 컴포넌트 업데이트
+
+- componentWillReceiveProps(nextProps) - 컴포넌트의 프로퍼티가 변경될 때
+- shouldComponentUpdate(nextProps, nextState) - 컴포넌트의 외관을 변경해도 좋을지 판단할 때
+- componentWillUpdate() - 컴포넌트 업데이트 되기 직전
+- render() - 컴포넌트가 렌더링될 때
+- componentDidUpdate()
+
+- componentWillUnmount() - 컴포넌트가 DOM에서 제거될때
+
